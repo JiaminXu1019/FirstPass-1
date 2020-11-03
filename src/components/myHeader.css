@@ -1,0 +1,35 @@
+.header{
+    position: absolute;
+    width: 100vw;
+    height: 15vh;
+
+    font-family: 'Poligon', sans-serif;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 8vmin;
+    line-height: 6vmax;
+  
+  
+    align-items: center;
+    text-align: center;
+    
+    background-color: #2774AE;
+    color: #FFC72C;
+  }
+
+  .under-header{
+    position: absolute;
+    left: 43.85%;
+    top: 67%;
+    font-family: 'Poligon', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 3vmin;
+    line-height: 2vmax;
+  
+  
+    align-items: center;
+    text-align: center;
+    color: #FFC72C;
+  }
+
