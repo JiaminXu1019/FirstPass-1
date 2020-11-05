@@ -5,7 +5,7 @@ function MyHeader() {
       <div>
         <div className="header">
           <p>FirstPass</p>
-          <div className="under-header">The bear essentials</div>
+        <div className="under-header">The bear essentials</div>
         </div>
       </div>
     )
