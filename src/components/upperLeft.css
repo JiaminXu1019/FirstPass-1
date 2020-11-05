@@ -1,0 +1,18 @@
+.description-container{
+    width: 40vw;
+    height: 15vh;
+    padding: 20px;
+    position: absolute;
+    left: 4vw;
+    top: 17vh;
+  }
+
+  .top-text{
+    font-size: 4.0vmin;
+    line-height: 10.0vmin;
+  }
+
+  .bottom-text{
+    font-size: 2.75vmin;
+    color: #828282;
+  }
