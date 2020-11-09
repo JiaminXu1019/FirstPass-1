@@ -1,0 +1,4 @@
+export const class_names = [{value: "COM SCI 30", label: "COM SCI 30"}, {value: "COM SCI 31", label: "COM SCI 31"}, {value: "COM SCI 32", label: "COM SCI 32"}, {value: "COM SCI 33", label: "COM SCI 33"}, 
+{value: "MATH 31A", label: "MATH 31A"}, {value: "MATH 31B", label: "MATH 31B"}, {value: "MATH 32A", label: "MATH32A"}, {value: "MATH 32B", label: "MATH 32B"},
+{value: "MATH 33A", label: "MATH 33A"}, {value: "MATH 33B", label: "MATH 33B"}, {value: "PHYSICS 1A", label: "PHYSICS 1A"}, {value: "PHYSICS 1B", label: "PHYSICS 1B"},
+{value: "PHYSICS 1C", label: "PHYSICS 1C"}, {value: "CHEM 20A", label: "CHEM 20A"}, {value: "CHEM 20B", label: "CHEM 20B"}]
