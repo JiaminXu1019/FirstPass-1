@@ -1,5 +1,3 @@
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -14,6 +12,7 @@ code {
   font-family: 'Poligon Light';
   src: url('./fonts/Poligon-Family/Poligon Light.otf');
 }
+
 body {
   margin: 0;
   font-family: 'Poligon';

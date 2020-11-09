@@ -5,6 +5,7 @@ import React from 'react';
 import UpperLeft from './upperLeft';
 import MyHeader from './myHeader.js';
 import Checkboxes from './checkbox.js';
+import ClassDropdown from './classDropdown.js'
 import './myHeader.css'
 
 
@@ -17,6 +18,8 @@ const Home = () => {
           <UpperLeft />
 
           <Checkboxes />
+
+          <ClassDropdown />
 
         </div>
       );
