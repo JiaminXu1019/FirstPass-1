@@ -207,10 +207,10 @@
 .container{
     position: relative;
     width: 22vw;
-    height: 75vh;
+    height: 65vh;
 
     top: 29vh;
-    left: 18vw;
+    left: 20vw;
     align-content: center;
     
     overflow-x: hidden;

@@ -6,6 +6,8 @@ import UpperLeft from './upperLeft';
 import MyHeader from './myHeader.js';
 import Checkboxes from './checkbox.js';
 import ClassDropdown from './classDropdown.js'
+import StandingRadioButton from './standing-radio-button.js'
+import QuarterRadioButton from './quarter-radio-button.js'
 import './myHeader.css'
 
 
@@ -17,9 +19,13 @@ const Home = () => {
 
           <UpperLeft />
 
-          <Checkboxes />
+          {/* <Checkboxes /> */}
 
           <ClassDropdown />
+
+          <StandingRadioButton />
+
+          <QuarterRadioButton />
 
         </div>
       );
