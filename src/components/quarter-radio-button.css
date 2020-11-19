@@ -1,0 +1,17 @@
+.radio2-container{
+    width: 20vw;
+    height: 25vh;
+    position: absolute;
+    top: 70.75vh;
+    left: 6.5vw;
+}
+
+.radio2{
+    text-align: left;
+    font-size: 2.75vmin;
+}
+
+.btn2{
+    position: relative;
+    left: -8vw;
+}
