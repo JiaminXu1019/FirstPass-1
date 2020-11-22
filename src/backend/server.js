@@ -14,7 +14,7 @@ app.use(
 )
 
 
-app.get("/classesP",function(req,res)
+app.get("/classesData",function(req,res)
 {
 
  res.send("REACT");
