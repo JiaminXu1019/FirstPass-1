@@ -40,17 +40,15 @@ async function run() {
 run()
 .then(() => {
  
-
   /* filter the data so that only classes which contain dates with all full seats are in the array */ 
  for(let i = 0; i < percent_filled.length; i++)
  {
   percent_filled[i] = percent_filled[i].filter((obj)=> obj.y === 100);
  }
 
- console.log(percent_filled);
+ console.log(percent_filled[1][0].x);
 
 })
-
 
 
 app.use(bodyParser.json())
@@ -73,7 +71,10 @@ app.get("/classesData",function(req,res)
  for(const c in classes)
  {
    const index = allClasses.indexOf(c);
+   const date = percent_filled[index][0].x;
+   dates.push(date);
  }
+
  res.status(200).send(dates);
 
 })
