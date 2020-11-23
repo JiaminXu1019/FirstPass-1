@@ -46,7 +46,6 @@ run()
   percent_filled[i] = percent_filled[i].filter((obj)=> obj.y === 100);
  }
 
- console.log(percent_filled[1][0].x);
 
 })
 
@@ -65,17 +64,33 @@ app.get("/",function(req,res)
 
 app.get("/classesData",function(req,res)
 {
- const classes = req.body.classes;
- let dates = [];
 
- for(const c in classes)
+try{
+ const classes = req.body.classes;
+ var dates = [];
+
+
+
+ for(let i = 0; i < classes.length; i ++)
  {
+   let c = classes[i];
    const index = allClasses.indexOf(c);
-   const date = percent_filled[index][0].x;
-   dates.push(date);
- }
+
+   if(percent_filled[index][0] !== undefined)
+   {
+    const date = percent_filled[index][0].x;
+    dates.push(date);
+   }
+   else{
+    dates.push(null);
+   }
+   }
 
  res.status(200).send(dates);
+  }
+ catch(error) {
+  return res.status(500).json({error: error.message })
+}
 
 })
 
