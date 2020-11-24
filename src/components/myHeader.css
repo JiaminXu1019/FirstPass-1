@@ -2,34 +2,26 @@
     position: absolute;
     width: 100vw;
     height: 15vh;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #2774AE;
+}
 
+  .header p {
+    color: #FFC72C;
     font-family: 'Poligon', sans-serif;
     font-style: normal;
     font-weight: 350;
-    font-size: 8vmin;
-    line-height: 6vmax;
-  
-  
-    align-items: center;
-    text-align: center;
-    
-    background-color: #2774AE;
-    color: #FFC72C;
+    font-size: 4rem;
   }
 
-  .under-header{
-    position: absolute;
-    left: 43.85%;
-    top: 67%;
-    font-family: 'Poligon', sans-serif;
-    font-style: normal;
+  .header #subtitle {
     font-weight: 200;
-    font-size: 3vmin;
-    line-height: 2vmax;
-  
-  
-    align-items: center;
-    text-align: center;
-    color: #FFC72C;
+    font-size: 1.4rem;
+    margin-top: -10px;
   }
 
