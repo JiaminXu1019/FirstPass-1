@@ -26,11 +26,7 @@ const Home = () => {
               <div className="radion-button-title">Standing</div>
               <StandingRadioButton />
             </div>
-            <div className="box"><ClassDropdown /></div>
-            <div className="box">
-              <div className="radion-button-title">Quarter</div>
-              <QuarterRadioButton />
-            </div>
+            <div className="box" id="dropdown"><ClassDropdown /></div>
           </div>
         </div>
       );
