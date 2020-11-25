@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './standing-radio-button.css';
+import './radio-button.css';
 
 class StandingRadioButton extends Component {
   constructor() {
@@ -25,7 +25,7 @@ class StandingRadioButton extends Component {
   render() {
     return (
     <div className = "radio-container">
-      <form onSubmit={this.formSubmit}>
+      <form id = "form" onSubmit={this.formSubmit}>
         <div className="radio">
           <label>
             <input

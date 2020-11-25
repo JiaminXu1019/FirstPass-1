@@ -206,19 +206,18 @@
 
 .container{
     position: relative;
-    width: 22vw;
-    height: 65vh;
+    width: 100%;
 
-    top: 29vh;
-    left: 20vw;
     align-content: center;
     
     overflow-x: hidden;
     overflow-y: auto;
+
+    font-size: 1.25rem;
 }
 
 .inside{
-    padding: 2vw;
+    padding: 0;
 }
 
 .input{

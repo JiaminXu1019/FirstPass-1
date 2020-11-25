@@ -33,21 +33,17 @@ class ClassDropdown extends React.Component {
     render() {
         console.log(this.state);
         return(
-            <div>
-                <div className = "container">
-                    <form className = "inside"> 
-                        <br />
-                        <Select
-                            placeholder="Search for a class"
-                            isMulti
-                            options={class_names}
-                            search
-                            value={this.state.class1}
-                            onChange={val => this.selectChange(val, "class1")}
-                        />
-                        <br />
-                    </form> 
-                </div>
+            <div className = "container">
+                <form className = "inside"> 
+                    <Select
+                        placeholder="Search for a class"
+                        isMulti
+                        options={class_names}
+                        search
+                        value={this.state.class1}
+                        onChange={val => this.selectChange(val, "class1")}
+                    />
+                </form> 
             </div>
         );
     }
