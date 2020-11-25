@@ -69,8 +69,6 @@ try{
  const classes = req.body.classes;
  var dates = [];
 
-
-
  for(let i = 0; i < classes.length; i ++)
  {
    let c = classes[i];

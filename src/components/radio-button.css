@@ -1,0 +1,18 @@
+.radio-container{
+    width: 20vw;
+}
+
+.radio, .selected{
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+#form {
+    text-align: left;
+}
+
+.radion-button-title{
+    font-size: 3.35vmin;
+    position: relative;
+    text-align: left;
+} 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './quarter-radio-button.css';
+import './radio-button.css';
 
 class QuarterRadioButton extends Component {
   constructor() {
@@ -24,9 +24,9 @@ class QuarterRadioButton extends Component {
 
   render() {
     return (
-    <div className = "radio2-container">
-      <form onSubmit={this.formSubmit}>
-        <div className="radio2">
+    <div className = "radio-container">
+      <form id="form" onSubmit={this.formSubmit}>
+        <div className="radio">
           <label>
             <input
               type="radio"
@@ -37,7 +37,7 @@ class QuarterRadioButton extends Component {
             Fall
           </label>
         </div>
-        <div className="radio2">
+        <div className="radio">
           <label>
             <input
               type="radio"
@@ -48,7 +48,7 @@ class QuarterRadioButton extends Component {
             Winter
           </label>
         </div>
-        <div className="radio2">
+        <div className="radio">
           <label>
             <input
               type="radio"
@@ -59,7 +59,7 @@ class QuarterRadioButton extends Component {
             Spring
           </label>
         </div>
-        <div className="radio2">
+        <div className="radio">
           <label>
             <input
               type="radio"
@@ -73,7 +73,7 @@ class QuarterRadioButton extends Component {
         {/* <div className="selected">
           Selected option is : {this.state.selectedOption}
         </div> */}
-        <button className="btn2" type="submit">
+        <button className="btn" type="submit">
           Submit
         </button>
       </form>

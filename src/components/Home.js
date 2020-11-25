@@ -9,7 +9,7 @@ import ClassDropdown from './classDropdown.js'
 import StandingRadioButton from './standing-radio-button.js'
 import QuarterRadioButton from './quarter-radio-button.js'
 import './myHeader.css'
-
+import './Home.css'
 
 
 const Home = () => {
@@ -21,12 +21,17 @@ const Home = () => {
 
           {/* <Checkboxes /> */}
 
-          <ClassDropdown />
-
-          <StandingRadioButton />
-
-          <QuarterRadioButton />
-
+          <div className="radio-buttons">
+            <div className="box">
+              <div className="radion-button-title">Standing</div>
+              <StandingRadioButton />
+            </div>
+            <div className="box"><ClassDropdown /></div>
+            <div className="box">
+              <div className="radion-button-title">Quarter</div>
+              <QuarterRadioButton />
+            </div>
+          </div>
         </div>
       );
 }
