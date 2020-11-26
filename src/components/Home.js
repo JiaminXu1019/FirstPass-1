@@ -5,14 +5,15 @@ import React from 'react';
 // import Col from 'react-bootstrap/Col';
 import './radio-button.css';
 
+import Select from 'react-select';
+import './classDropdown.css'
+import{class_names} from './classNames.js';
 
-class Home extends React.Component {
-
-  constructor(props) {
-    super(props);
+class StandingRadioButton extends React.Component {
+  constructor() {
+    super();
     this.state = {
-        classes: "",
-        selectedOption: ""
+      selectedOption: ""
     };
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
@@ -87,5 +88,66 @@ class Home extends React.Component {
         </div>
     );
   }
+}
+
+class ClassDropdown extends React.Component {
+
+  constructor(props) {
+      super(props);
+
+      this.state = {
+          class1: "",
+      };
+      this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange = e => {
+      this.setState({
+          [e.target.name]: e.target.value
+      });
+  };
+
+  selectChange = (val, name) => {
+      this.setState({
+          [name]: val
+      });
+  }
+
+  render() {
+      console.log(this.state);
+      return(
+          <div className = "container">
+              <form className = "inside"> 
+                  <Select
+                      placeholder="Search for a class"
+                      isMulti
+                      options={class_names}
+                      search
+                      value={this.state.class1}
+                      onChange={val => this.selectChange(val, "class1")}
+                  />
+              </form> 
+          </div>
+      );
+  }
+}
+
+class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      classes: "",
+      selectedOption: ""
+    };
+  }
+
+  render() {
+    return (
+      <div className="radio-buttons">
+        <StandingRadioButton /><ClassDropdown />
+      </div>
+    );
+  } 
 }
 export default Home

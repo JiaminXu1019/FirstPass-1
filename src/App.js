@@ -18,14 +18,14 @@ function App() {
 
         <UpperLeft />
 
-        <div className="radio-buttons">
+        {/* <div className="radio-buttons">
           <div className="box">
             <p id="radion-button-title">Standing</p>
-            {/* <StandingRadioButton /> */}
-            <Home />
+            <StandingRadioButton />
           </div>
           <div className="box" id="dropdown"><ClassDropdown /></div>
-        </div>
+        </div> */}
+        <Home />
     </div>
   );
 }
