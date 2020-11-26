@@ -1,35 +1,91 @@
+// import { ReactComponent } from '*.svg';
 import React from 'react';
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
-import UpperLeft from './upperLeft';
-import MyHeader from './myHeader.js';
-import Checkboxes from './checkbox.js';
-import ClassDropdown from './classDropdown.js'
-import StandingRadioButton from './standing-radio-button.js'
-import QuarterRadioButton from './quarter-radio-button.js'
-import './myHeader.css'
-import './Home.css'
+import './radio-button.css';
 
 
-const Home = () => {
+class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        classes: "",
+        selectedOption: ""
+    };
+    this.onValueChange = this.onValueChange.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+  }
+
+  onValueChange(event) {
+    this.setState({
+      selectedOption: event.target.value
+    });
+  }
+
+  formSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.selectedOption)
+  }
+
+  render() {
     return (
-        <div>
-          <MyHeader />
-
-          <UpperLeft />
-
-          {/* <Checkboxes /> */}
-
-          <div className="radio-buttons">
-            <div className="box">
-              <div className="radion-button-title">Standing</div>
-              <StandingRadioButton />
-            </div>
-            <div className="box" id="dropdown"><ClassDropdown /></div>
-          </div>
+    <div className = "radio-container">
+      <form id = "form" onSubmit={this.formSubmit}>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Freshman"
+              checked={this.state.selectedOption === "Freshman"}
+              onChange={this.onValueChange}
+            />
+            Freshman
+          </label>
         </div>
-      );
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Sophomore"
+              checked={this.state.selectedOption === "Sophomore"}
+              onChange={this.onValueChange}
+            />
+            Sophomore
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Junior"
+              checked={this.state.selectedOption === "Junior"}
+              onChange={this.onValueChange}
+            />
+            Junior
+          </label>
+        </div>
+        <div className="radio">
+          <label>
+            <input
+              type="radio"
+              value="Senior"
+              checked={this.state.selectedOption === "Senior"}
+              onChange={this.onValueChange}
+            />
+            Senior
+          </label>
+        </div>
+        {/* <div className="selected">
+          Selected option is : {this.state.selectedOption}
+        </div> */}
+        <button className="btn" type="submit">
+          Submit
+        </button>
+      </form>
+        </div>
+    );
+  }
 }
-
 export default Home

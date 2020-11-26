@@ -1,6 +1,6 @@
 .radio-buttons {
     display:grid;
-    grid-template-columns: 12.5% 20%;
+    grid-template-columns: 15% 20%;
     grid-template-rows: 50vh auto; /* clean up later */
     grid-column-gap: 2.5%;
     grid-row-gap: 20px;

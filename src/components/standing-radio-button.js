@@ -5,7 +5,7 @@ class StandingRadioButton extends Component {
   constructor() {
     super();
     this.state = {
-      name: "React"
+      selectedOption: ""
     };
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
