@@ -1,25 +1,14 @@
 import React, { Component } from "react";
 import './radio-button.css';
 
-class StandingRadioButton extends Component {
-  constructor() {
-    super();
-    this.state = {
-      selectedOption: ""
-    };
-    this.onValueChange = this.onValueChange.bind(this);
-    this.formSubmit = this.formSubmit.bind(this);
-  }
-
-  onValueChange(event) {
-    this.setState({
-      selectedOption: event.target.value
-    });
+class StandingRadioButton extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
   formSubmit(event) {
     event.preventDefault();
-    console.log(this.state.selectedOption)
+    console.log(this.props.parentState)
   }
 
   render() {
@@ -31,8 +20,8 @@ class StandingRadioButton extends Component {
             <input
               type="radio"
               value="Freshman"
-              checked={this.state.selectedOption === "Freshman"}
-              onChange={this.onValueChange}
+              checked={this.props.parentState === "Freshman"}
+              onChange={this.props.onValueChange}
             />
             Freshman
           </label>
@@ -42,8 +31,8 @@ class StandingRadioButton extends Component {
             <input
               type="radio"
               value="Sophomore"
-              checked={this.state.selectedOption === "Sophomore"}
-              onChange={this.onValueChange}
+              checked={this.props.parentState === "Sophomore"}
+              onChange={this.props.onValueChange}
             />
             Sophomore
           </label>
@@ -53,8 +42,8 @@ class StandingRadioButton extends Component {
             <input
               type="radio"
               value="Junior"
-              checked={this.state.selectedOption === "Junior"}
-              onChange={this.onValueChange}
+              checked={this.props.parentState === "Junior"}
+              onChange={this.props.onValueChange}
             />
             Junior
           </label>
@@ -64,15 +53,16 @@ class StandingRadioButton extends Component {
             <input
               type="radio"
               value="Senior"
-              checked={this.state.selectedOption === "Senior"}
-              onChange={this.onValueChange}
+              checked={this.props.parentState === "Senior"}
+              onChange={this.props.onValueChange}
             />
             Senior
           </label>
         </div>
+
         {/* <div className="selected">
-          Selected option is : {this.state.selectedOption}
-        </div> */}
+          Selected option is : {this.props.parentState.selectedOption}
+        </div>  */}
         <button className="btn" type="submit">
           Submit
         </button>
