@@ -11,8 +11,6 @@ class ClassDropdown extends React.Component {
 
         this.state = {
             class1: "",
-            class2: "",
-            class3: ""
         };
         this.handleChange = this.handleChange.bind(this);
     }
