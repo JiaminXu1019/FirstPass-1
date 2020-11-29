@@ -17,26 +17,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
     };
 
-    this.authListener = this.authListener.bind(this);
-  }
-
-  componentDidMount() {
-    this.authListener();
   }
 
 
-  authListener() {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user });
-      } else {
-        this.setState({ user: null });
-      }
-    })
-  }
   render() 
   {
       return (
@@ -44,10 +29,7 @@ class App extends React.Component {
  
             <MyHeader />
             <UpperLeft /> 
-             {this.state.user ? (<> 
-  
-             <Home /> </>) : ( <Login /> ) }
-
+             <Home /> 
 
         </div>
       );

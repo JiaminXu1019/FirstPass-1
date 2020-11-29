@@ -3,6 +3,7 @@ import React from 'react';
 import fire from './fire.js';
 // Connection to backend
 import axios from 'axios'
+import Login from './Login.js'
 
 // Components
 import StandingRadioButton from './standing-radio-button'
@@ -22,8 +23,11 @@ class Home extends React.Component {
       classes: "",
       selectedOption: "",
       results: "",
-      resultsReceived: false
+      resultsReceived: false,
+      user: null
     };
+    this.authListener = this.authListener.bind(this);
+
 
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
@@ -75,10 +79,26 @@ class Home extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.authListener();
+  }
+
+
+  authListener() {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    })
+  }
 
   logout() {
     fire.auth().signOut();
   }
+
+  
 
   render() {
     return (
@@ -99,11 +119,14 @@ class Home extends React.Component {
       </button>
       </div>
 
-       <div style={{textAlign: 'center'}}>
-       <p>You Are Logged In</p>
-       <button onClick = {this.logout}>Logout</button>
-       </div>
-
+      { this.state.user ? ( 
+          <div>
+        <p>You Are Logged In</p>
+        <button onClick = {this.logout}>Logout</button>
+        </div>) 
+        
+        : ( <Login /> ) }
+      
        </>
     );
   } 
