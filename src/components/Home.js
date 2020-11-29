@@ -59,7 +59,7 @@ class Home extends React.Component {
 
   //Gets an array of times when classes fill up and stores in this.state.results
   //Note: the array is in the same order as the classes array in the state 
-  //-1 means the class never fills up
+  //9999 means the class never fills up
   getClasses = async () => {
     return await axios.post(serverURL + '/classesData', {classes: this.state.classes})
     .then((response) => {
