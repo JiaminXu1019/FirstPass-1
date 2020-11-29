@@ -83,11 +83,19 @@ class Home extends React.Component {
     const gotResults = this.state.resultsReceived;
     const arrayOfClassObjects = this.state.classes;
     var arrayOfClasses = [];
+    const fillUpDates = this.state.results;
     if(gotResults) {
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
-        arrayOfClasses.push(arrayOfClassObjects[i]["value"]);
+        var name = arrayOfClassObjects[i]["value"];
+        if (fillUpDates[i] != 9999) {
+          name = name.concat("(fills up), ");
+        } else {
+          name = name.concat(", ");
+        } 
+        arrayOfClasses.push(name);
       }
     }
+
 
     return (
       <div className="radio-buttons">
@@ -104,7 +112,7 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
-        <p>Classes: {arrayOfClasses}</p>
+        <p id="classes">Classes: {arrayOfClasses}</p>
         <button onClick={() => this.getClasses()}>
           Click me
         </button>
