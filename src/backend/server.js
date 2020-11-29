@@ -34,8 +34,8 @@ async function read(fileName) {
  
 async function run() {
  try {
- allClasses = await read('JSON_Data/class_names.json')
- percent_filled = await read('JSON_Data/pct_data.json');
+ allClasses = await read('src/backend/JSON_Data/class_names.json')
+ percent_filled = await read('src/backend/JSON_Data/pct_data.json');
  } catch (err) {
   throw err
  }
@@ -90,7 +90,7 @@ try{
     dates.push(date);
    }
    else{
-    dates.push(99999);
+    dates.push(9999);
    }
   }
 

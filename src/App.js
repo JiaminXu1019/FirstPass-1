@@ -9,8 +9,6 @@ import './components/myHeader.css'
 import './components/Login.js'
 import './components/Home.css'
 
-import fire from './components/fire.js'
-import Login from './components/Login.js';
 
 class App extends React.Component {
 

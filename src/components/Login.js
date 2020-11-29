@@ -34,9 +34,7 @@ class Login extends React.Component {
 
   render() {
     return (
-    
       <>
-
       <div className = "login">Login To Save Classes</div>
 
       <div className = "container">
