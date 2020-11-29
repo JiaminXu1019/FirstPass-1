@@ -4,6 +4,10 @@ const http = require('http')
 const bodyParser = require('body-parser')
 const util = require('util')
 
+// Connection from frontend to backend
+var cors = require('cors')
+app.use(cors())
+
 const server = http.createServer(app)
 const PORT = process.env.PORT|| 5000;
 
@@ -30,8 +34,8 @@ async function read(fileName) {
  
 async function run() {
  try {
- allClasses = await read('src/backend/JSON_Data/class_names.json')
- percent_filled = await read('src/backend/JSON_Data/pct_data.json');
+ allClasses = await read('JSON_Data/class_names.json')
+ percent_filled = await read('JSON_Data/pct_data.json');
  } catch (err) {
   throw err
  }
@@ -62,16 +66,22 @@ app.get("/",function(req,res)
  res.send("Server");
 })
 
-app.get("/classesData",function(req,res)
+/*Structure of an element in the classes array
+  {
+    label: className,
+    value: className
+  }
+*/
+app.post("/classesData",function(req,res)
 {
-
+  console.log(req.body);
 try{
  const classes = req.body.classes;
  var dates = [];
 
  for(let i = 0; i < classes.length; i ++)
  {
-   let c = classes[i];
+   let c = classes[i].value;
    const index = allClasses.indexOf(c);
 
    if(percent_filled[index][0] !== undefined)
@@ -82,10 +92,11 @@ try{
    else{
     dates.push(99999);
    }
-   }
+  }
 
  res.status(200).send(dates);
-  }
+}
+
  catch(error) {
   return res.status(500).json({error: error.message })
 }
