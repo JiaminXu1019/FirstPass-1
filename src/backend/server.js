@@ -66,36 +66,12 @@ app.get("/",function(req,res)
  res.send("Server");
 })
 
-// app.get("/classesData",function(req,res)
-// {
-
-// try{
-//  const classes = req.body.classes;
-//  var dates = [];
-
-//  for(let i = 0; i < classes.length; i ++)
-//  {
-//    let c = classes[i];
-//    const index = allClasses.indexOf(c);
-
-//    if(percent_filled[index][0] !== undefined)
-//    {
-//     const date = percent_filled[index][0].x;
-//     dates.push(date);
-//    }
-//    else{
-//     dates.push(null);
-//    }
-//    }
-
-//  res.status(200).send(dates);
-//   }
-//  catch(error) {
-//   return res.status(500).json({error: error.message })
-// }
-
-// })
-
+/*Structure of an element in the classes array
+  {
+    label: className,
+    value: className
+  }
+*/
 app.post("/classesData",function(req,res)
 {
   console.log(req.body);
