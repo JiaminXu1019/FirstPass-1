@@ -131,7 +131,7 @@ class Home extends React.Component {
     if(gotResults) {
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
-        if (fillUpDates[i] != 9999) {
+        if (fillUpDates[i] !== 9999) {
           name = name.concat("(fills up), ");
         } else {
           name = name.concat(", ");
