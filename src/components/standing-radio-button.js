@@ -63,9 +63,6 @@ class StandingRadioButton extends React.Component {
         {/* <div className="selected">
           Selected option is : {this.props.parentState.selectedOption}
         </div>  */}
-        <button className="btn" type="submit">
-          Submit
-        </button>
       </form>
         </div>
     );
