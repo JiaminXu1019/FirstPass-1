@@ -48,13 +48,14 @@ class Home extends React.Component {
   //classDropdown Functions
   handleChange = e => {
     this.setState({
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
     });
   };
   
   selectChange = (val, name) => {
     this.setState({
-        [name]: val
+        [name]: val,
+        resultsReceived: false
     });
   }
 
