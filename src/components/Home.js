@@ -7,6 +7,7 @@ import axios from 'axios'
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
+import dates from '../backend/JSON_Data/dates.json'
 //import { response } from 'express';
 
 // import Container from 'react-bootstrap/Container';
@@ -47,13 +48,14 @@ class Home extends React.Component {
   //classDropdown Functions
   handleChange = e => {
     this.setState({
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
     });
   };
   
   selectChange = (val, name) => {
     this.setState({
-        [name]: val
+        [name]: val,
+        resultsReceived: false
     });
   }
 
@@ -77,21 +79,44 @@ class Home extends React.Component {
 
 
   render() {
+
+    // convert JS Object of input classes into an array
+    const gotResults = this.state.resultsReceived;
+    const arrayOfClassObjects = this.state.classes;
+    var arrayOfClasses = [];
+    const fillUpDates = this.state.results;
+    if(gotResults) {
+      for(var i = 0; i < arrayOfClassObjects.length; i++) {
+        var name = arrayOfClassObjects[i]["value"];
+        if (fillUpDates[i] != 9999) {
+          name = name.concat("(fills up), ");
+        } else {
+          name = name.concat(", ");
+        } 
+        arrayOfClasses.push(name);
+      }
+    }
+
+
     return (
       <div className="radio-buttons">
-        <StandingRadioButton 
-          onValueChange = {this.onValueChange}
-          formSubmit = {this.formSubmit}
-          parentState = {this.state.selectedOption}
-        />
+        <div className="box">
+          <p id="standing">Standing</p>
+          <StandingRadioButton 
+            onValueChange = {this.onValueChange}
+            formSubmit = {this.formSubmit}
+            parentState = {this.state.selectedOption}
+          />
+        </div>
         <ClassDropdown 
           handleChange = {this.handleChange}
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
-      <button onClick={() => this.getClasses()}>
-        Click me
-      </button>
+        <p id="classes">Classes: {arrayOfClasses}</p>
+        <button onClick={() => this.getClasses()}>
+          Click me
+        </button>
       </div>
     );
   } 
