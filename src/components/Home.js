@@ -7,18 +7,24 @@ import axios from 'axios'
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
+//import { response } from 'express';
 
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
+
+const serverURL = 'http://localhost:5000';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       classes: "",
-      selectedOption: ""
+      selectedOption: "",
+      results: "",
+      resultsReceived: false
     };
+
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
 
@@ -49,7 +55,27 @@ class Home extends React.Component {
     this.setState({
         [name]: val
     });
-  }  
+  }
+
+  //Gets an array of rearranged classes and stores in this.state.results
+  getClasses = async () => {
+    // this.setState ({
+    //   resultsReceived: true
+    // });
+    return await axios.post(serverURL + '/classesData', {classes: this.state.classes})
+    .then((response) => {
+      this.setState({
+        results: response.data,
+        resultsReceived: true
+      }, () => {
+        console.log(`Rearranged classes returned: ${this.state.results}`)
+      })
+    })
+    .catch((error)=> {
+      console.log(error)
+    });
+  }
+
 
   render() {
     return (
@@ -64,6 +90,9 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
+      <button onClick={() => this.getClasses()}>
+        Click me
+      </button>
       </div>
     );
   } 
