@@ -90,7 +90,7 @@ try{
     dates.push(date);
    }
    else{
-    dates.push(-1);
+    dates.push(9999);
    }
   }
 
