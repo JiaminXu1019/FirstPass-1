@@ -7,6 +7,7 @@ import axios from 'axios'
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
+import dates from '../backend/JSON_Data/dates.json'
 //import { response } from 'express';
 
 // import Container from 'react-bootstrap/Container';
@@ -77,21 +78,36 @@ class Home extends React.Component {
 
 
   render() {
+
+    // convert JS Object of input classes into an array
+    const gotResults = this.state.resultsReceived;
+    const arrayOfClassObjects = this.state.classes;
+    var arrayOfClasses = [];
+    if(gotResults) {
+      for(var i = 0; i < arrayOfClassObjects.length; i++) {
+        arrayOfClasses.push(arrayOfClassObjects[i]["value"]);
+      }
+    }
+
     return (
       <div className="radio-buttons">
-        <StandingRadioButton 
-          onValueChange = {this.onValueChange}
-          formSubmit = {this.formSubmit}
-          parentState = {this.state.selectedOption}
-        />
+        <div className="box">
+          <p id="standing">Standing</p>
+          <StandingRadioButton 
+            onValueChange = {this.onValueChange}
+            formSubmit = {this.formSubmit}
+            parentState = {this.state.selectedOption}
+          />
+        </div>
         <ClassDropdown 
           handleChange = {this.handleChange}
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
-      <button onClick={() => this.getClasses()}>
-        Click me
-      </button>
+        <p>Classes: {arrayOfClasses}</p>
+        <button onClick={() => this.getClasses()}>
+          Click me
+        </button>
       </div>
     );
   } 
