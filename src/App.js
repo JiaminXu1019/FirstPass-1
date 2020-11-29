@@ -8,26 +8,52 @@ import MyHeader from './components/myHeader.js';
 import ClassDropdown from './components/classDropdown.js'
 import StandingRadioButton from './components/standing-radio-button.js'
 import './components/myHeader.css'
+import './components/Login.js'
 import './components/Home.css'
 
+import fire from './components/fire.js'
+import Login from './components/Login.js';
 
-function App() {
-  return (
-    <div className="App">
-        <MyHeader />
+class App extends React.Component {
 
-        <UpperLeft />
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+    };
 
-        {/* <div className="radio-buttons">
-          <div className="box">
-            <p id="radion-button-title">Standing</p>
-            <StandingRadioButton />
-          </div>
-          <div className="box" id="dropdown"><ClassDropdown /></div>
-        </div> */}
-        <Home />
-    </div>
-  );
+    this.authListener = this.authListener.bind(this);
+  }
+
+  componentDidMount() {
+    this.authListener();
+  }
+
+
+  authListener() {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    })
+  }
+  render() 
+  {
+      return (
+        <div className="App">
+ 
+            <MyHeader />
+            <UpperLeft /> 
+             {this.state.user ? (<> 
+  
+             <Home /> </>) : ( <Login /> ) }
+
+
+        </div>
+      );
+  }
 }
 
 export default App;

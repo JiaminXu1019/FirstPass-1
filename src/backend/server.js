@@ -80,7 +80,7 @@ try{
     dates.push(date);
    }
    else{
-    dates.push(null);
+    dates.push(99999);
    }
    }
 

@@ -4,6 +4,7 @@ import React from 'react';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 import './radio-button.css';
+import fire from './fire.js';
 
 import Select from 'react-select';
 import './classDropdown.css'
@@ -171,8 +172,13 @@ class Home extends React.Component {
     });
   }  
 
+  logout() {
+    fire.auth().signOut();
+  }
+
   render() {
     return (
+      <>
       <div className="radio-buttons">
         <StandingRadioButton 
           onValueChange = {this.onValueChange}
@@ -185,6 +191,13 @@ class Home extends React.Component {
           classes = {this.state.classes}
         />
       </div>
+
+       <div style={{textAlign: 'center'}}>
+       <p>You Are Logged In</p>
+       <button onClick = {this.logout}>Logout</button>
+       </div>
+
+       </>
     );
   } 
 }
