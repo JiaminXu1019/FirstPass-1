@@ -83,26 +83,54 @@ class Home extends React.Component {
     // convert JS Object of input classes into an array
     const gotResults = this.state.resultsReceived;
     const arrayOfClassObjects = this.state.classes;
-    var arrayOfClasses = [];
     const fillUpDates = this.state.results;
-    let classOrder = new Map();
+    const standing = this.state.selectedOption;
+
+    var firstPassClasses = []; // classes to first pass
+    var closedClasses = []; // classes that close before first pass
+    var openClasses = []; // classes that never fill up
+    let classOrder = new Map(); // map of potential first pass classes to index into dates.json
+
+    // set startOfFirstPass to the starts of first passes based on standing
+    var startOfFirstPass = 0;
+    switch(standing) {
+      case 'Freshman':
+        startOfFirstPass = 122;
+        break;
+      case 'Sophomore':
+        startOfFirstPass = 100;
+        break;
+      case 'Junior':
+        startOfFirstPass = 58;
+        break;
+    }
+
     if(gotResults) {
+      /* go through array of objects of duplicate class names */
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
-        classOrder.set(fillUpDates[i], name);
+        // put into classOrder if it fills up, openClasses if it doesn't
+        if (fillUpDates[i] != 9999) {
+          classOrder.set(fillUpDates[i], name);
+        } else {
+          openClasses.push(name + ' (never fills up), ');
+        }
       }
       var sortedClasses = new Map([...classOrder.entries()].sort());
       console.log(sortedClasses);
       for (const [key, value] of sortedClasses.entries()) {
         console.log(key, value);
         var nameOfClass = value;
-        if (key != 9999) {
-          var filledDate = class_dates[key];
-          nameOfClass = nameOfClass + ' (' + filledDate +'), ';
+        var filledDate = class_dates[key];
+
+        // Check if the class closes before first pass
+        if (key < startOfFirstPass) {
+          nameOfClass = nameOfClass + ' (closed), ';
+          closedClasses.push(nameOfClass);
         } else {
-          nameOfClass = nameOfClass.concat(", ");
+          nameOfClass = nameOfClass + ' (' + filledDate +'), ';
+          firstPassClasses.push(nameOfClass); 
         }
-        arrayOfClasses.push(nameOfClass); 
     }
     }
 
@@ -122,7 +150,7 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
-        <p id="classes">Classes: {arrayOfClasses}</p>
+        <p id="classes">Classes: {firstPassClasses} {closedClasses} {openClasses}</p>
         <button onClick={() => this.getClasses()}>
           Click me
         </button>
