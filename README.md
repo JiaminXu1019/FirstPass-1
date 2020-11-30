@@ -15,10 +15,18 @@ After a moment, the web app will launch in your machine's browser.<br/>
 First, input your current standing. This will help the app know approximately when your First Pass begins.<br/>
 Next, input a list of classes you are interested in using the dropdown menu.<br/>
 Once you have chosen all your classes, submit using the button below. <br/>
-&nbsp;&nbsp;&nbsp;&nbsp; On the right side of the screen there will be a list of classes that you should First Pass (in green text),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; On the right side of the screen there will be a list of classes that you should First Pass along with how long they usually take to fill &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; up (in green text),<br/>
 &nbsp;&nbsp;&nbsp;&nbsp; a list of classes that are likely to have filled before your First Pass (in red text), <br/>
 &nbsp;&nbsp;&nbsp;&nbsp; and a list of classes that you should Second Pass because they are unlikely to fill up (in black text).<br/>
 Use this information to help you strategize which classes you should enroll in during your First Pass next quarter!<br/>
+
+# How to use Login
+To create an account, enter your email and a password.<br/>
+An option to "Save Classes" will appear at the bottom of the screen. This will save your selected classes so if you need to come back 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and check on them in the future, you don't need to re-enter them.<br/>
+If desired, click Logout after finishing.<br/>
+The next time you want to check your classes, simply Login with your email and password at the bottom of the screen. <br/>
+Your classes will be saved in the dropdown and you simply select your standing and search again!<br/>
 
 
 Created for CS97 Final Project by Andy Goh, Ethan Wong, Francis Feng, and Jiamin Xu
