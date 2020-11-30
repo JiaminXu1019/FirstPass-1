@@ -7,7 +7,7 @@ import axios from 'axios'
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
-import dates from '../backend/JSON_Data/dates.json'
+import {class_dates} from './dates.js'
 //import { response } from 'express';
 
 // import Container from 'react-bootstrap/Container';
@@ -85,16 +85,25 @@ class Home extends React.Component {
     const arrayOfClassObjects = this.state.classes;
     var arrayOfClasses = [];
     const fillUpDates = this.state.results;
+    let classOrder = new Map();
     if(gotResults) {
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
-        if (fillUpDates[i] != 9999) {
-          name = name.concat("(fills up), ");
-        } else {
-          name = name.concat(", ");
-        } 
-        arrayOfClasses.push(name);
+        classOrder.set(fillUpDates[i], name);
       }
+      var sortedClasses = new Map([...classOrder.entries()].sort());
+      console.log(sortedClasses);
+      for (const [key, value] of sortedClasses.entries()) {
+        console.log(key, value);
+        var nameOfClass = value;
+        if (key != 9999) {
+          var filledDate = class_dates[key];
+          nameOfClass = nameOfClass + ' (' + filledDate +'), ';
+        } else {
+          nameOfClass = nameOfClass.concat(", ");
+        }
+        arrayOfClasses.push(nameOfClass); 
+    }
     }
 
 
