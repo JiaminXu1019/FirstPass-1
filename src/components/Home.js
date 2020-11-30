@@ -8,7 +8,7 @@ import Login from './Login.js'
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
-import dates from '../backend/JSON_Data/dates.json'
+import {class_dates} from './dates.js'
 //import { response } from 'express';
 
 // import Container from 'react-bootstrap/Container';
@@ -144,18 +144,57 @@ class Home extends React.Component {
     // convert JS Object of input classes into an array
     const gotResults = this.state.resultsReceived;
     const arrayOfClassObjects = this.state.classes;
-    var arrayOfClasses = [];
     const fillUpDates = this.state.results;
+    const standing = this.state.selectedOption;
+
+    var firstPassClasses = []; // classes to first pass
+    var closedClasses = []; // classes that close before first pass
+    var openClasses = []; // classes that never fill up
+    let classOrder = new Map(); // map of potential first pass classes to index into dates.json
+
+    // set startOfFirstPass to the starts of first passes based on standing
+    var startOfFirstPass = 0;
+    switch(standing) {
+      case 'Freshman':
+        startOfFirstPass = 122;
+        break;
+      case 'Sophomore':
+        startOfFirstPass = 100;
+        break;
+      case 'Junior':
+        startOfFirstPass = 58;
+        break;
+      default:
+        break;
+    }
+
     if(gotResults) {
+      /* go through array of objects of duplicate class names */
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
+        // put into classOrder if it fills up, openClasses if it doesn't
         if (fillUpDates[i] !== 9999) {
-          name = name.concat("(fills up), ");
+          classOrder.set(fillUpDates[i], name);
         } else {
-          name = name.concat(", ");
-        } 
-        arrayOfClasses.push(name);
+          openClasses.push(name + ' (never fills up), ');
+        }
       }
+      var sortedClasses = new Map([...classOrder.entries()].sort());
+      console.log(sortedClasses);
+      for (const [key, value] of sortedClasses.entries()) {
+        console.log(key, value);
+        var nameOfClass = value;
+        var filledDate = class_dates[key];
+
+        // Check if the class closes before first pass
+        if (key < startOfFirstPass) {
+          nameOfClass = nameOfClass + ' (closed), ';
+          closedClasses.push(nameOfClass);
+        } else {
+          nameOfClass = nameOfClass + ' (' + filledDate +'), ';
+          firstPassClasses.push(nameOfClass); 
+        }
+    }
     }
 
 
@@ -175,11 +214,16 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
+        <div className="classes">
+          <p id="classes">Classes: <br /> These classes should be first passed: </p>
+          <p id="first-pass-classes">{firstPassClasses}</p>
+          <hr />
+          <p id="closed-classes">{closedClasses}</p> 
+          <p id="classes"> {openClasses}</p>
+        </div>
         <button onClick={() => this.getClasses()}>
           Click me
         </button>
-        <p id="classes">First Pass: {arrayOfClasses}</p>
-
       </div>
 
 
