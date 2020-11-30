@@ -30,7 +30,6 @@ class Home extends React.Component {
 
     this.authListener = this.authListener.bind(this);
     this.saveClasses = this.saveClasses.bind(this);
-    this.logout = this.logout.bind(this);
 
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
