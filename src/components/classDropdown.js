@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectSearch from 'react-select-search';
+// import SelectSearch from 'react-select-search';
 import Select from 'react-select';
 import './classDropdown.css'
 import{class_names} from './classNames.js';
