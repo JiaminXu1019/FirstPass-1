@@ -29,7 +29,8 @@ class Home extends React.Component {
     };
 
     this.authListener = this.authListener.bind(this);
-
+    this.saveClasses = this.saveClasses.bind(this);
+    this.logout = this.logout.bind(this);
 
     this.onValueChange = this.onValueChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
@@ -90,14 +91,31 @@ class Home extends React.Component {
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
         this.setState({ user });
-        /*
-        TODO: Set the default classes to the user's saved classes
+        var data = null;
+        fire.firestore().collection('users').doc(this.state.user.email).get("classes")
+        
+        .then((doc)=> 
+        {
+          if (doc.exists){
+            console.log(doc.data());
+            data = doc.data();
+            this.setState({
+              classes: data.classes
+             });
+          } else {
+            console.log("No such document!")
+          }
+        })
+        .catch(function(error) 
+        {
+            console.log("Error getting document:", error)
+        });
 
-        */
+       
+       
       } else {
-        this.setState({ user: null });
+        this.setState({ user: null, classes: ""});
       }
     })
   }
@@ -157,18 +175,20 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
-        <p id="classes">Classes: {arrayOfClasses}</p>
         <button onClick={() => this.getClasses()}>
           Click me
         </button>
+        <p id="classes">First Pass: {arrayOfClasses}</p>
+
       </div>
+
 
       { this.state.user ? ( 
         <div>
         <button onClick = {()=> this.saveClasses()}>Save Classes </button>
 
         <p>You Are Logged In</p>
-        <button onClick = {this.logout}>Logout</button>
+        <button onClick = {()=>this.logout()}>Logout</button>
         </div>) 
 
         : ( <Login /> ) }
