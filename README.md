@@ -12,7 +12,7 @@ Use the command 'npm start' to launch the web app.<br/>
 After a moment, the web app will launch in your machine's browser.<br/>
 
 # How to use FirstPass
-First, input your current standing. This will help the app know approximately when your first pass begins.<br/>
+First, input your current standing. This will help the app know approximately when your First Pass begins.<br/>
 Next, input a list of classes you are interested in using the dropdown menu.<br/>
 Once you have chosen all your classes, submit using the button below. <br/>
 &nbsp;&nbsp;&nbsp;&nbsp; On the right side of the screen there will be a list of classes that you should First Pass (in green text),<br/>
