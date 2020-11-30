@@ -103,6 +103,8 @@ class Home extends React.Component {
       case 'Junior':
         startOfFirstPass = 58;
         break;
+      default:
+        break;
     }
 
     if(gotResults) {
@@ -110,7 +112,7 @@ class Home extends React.Component {
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
         // put into classOrder if it fills up, openClasses if it doesn't
-        if (fillUpDates[i] != 9999) {
+        if (fillUpDates[i] !== 9999) {
           classOrder.set(fillUpDates[i], name);
         } else {
           openClasses.push(name + ' (never fills up), ');
@@ -150,7 +152,13 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
-        <p id="classes">Classes: {firstPassClasses} {closedClasses} {openClasses}</p>
+        <div className="classes">
+          <p id="classes">Classes: <br /> These classes should be first passed: </p>
+          <p id="first-pass-classes">{firstPassClasses}</p>
+          <hr />
+          <p id="closed-classes">{closedClasses}</p> 
+          <p id="classes"> {openClasses}</p>
+        </div>
         <button onClick={() => this.getClasses()}>
           Click me
         </button>

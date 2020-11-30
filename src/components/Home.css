@@ -29,7 +29,14 @@ button {
     font-size: 2rem;
 }
 
-#classes {
+.classes {
     text-align: left;
     padding-left: 5%;
+}
+
+#first-pass-classes {
+    color: green;
+}
+#closed-classes {
+    color: red;
 }
