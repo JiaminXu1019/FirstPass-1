@@ -10,18 +10,8 @@ import './components/Login.js'
 import './components/Home.css'
 
 
-class App extends React.Component {
+function App() {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-
-  }
-
-
-  render() 
-  {
       return (
         <div className="App">
  
@@ -30,8 +20,9 @@ class App extends React.Component {
              <Home /> 
 
         </div>
-      );
-  }
+      )
+
+  
 }
 
 export default App;
