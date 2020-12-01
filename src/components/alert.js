@@ -1,15 +1,20 @@
 import Alert from 'react-bootstrap/Alert'
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
-function AlertDismissibleExample() {
 
-   return (
-     <Alert variant="danger">
-       <Alert.Heading>Incorrect Email or Password, Please Try Again</Alert.Heading>
+
+import "bootstrap/dist/css/bootstrap.css";
+
+
+function LoginError() {
   
-     </Alert>
-   );
+    return (
+      <Alert variant="warning" >
+        <Alert.Heading color = "red">Incorrect Email or Password</Alert.Heading>
+      </Alert>
+    );
 
 }
 
-export default AlertDismissibleExample
+export default LoginError

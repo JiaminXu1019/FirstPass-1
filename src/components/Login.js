@@ -1,7 +1,7 @@
 import React from 'react';
 import fire from './fire.js';
 import './Login.css'
-import AlertDismissibleExample from './alert.js';
+import LoginError from './alert.js';
 
 
 class Login extends React.Component {
@@ -14,7 +14,33 @@ class Login extends React.Component {
 
     this.signUp = this.signUp.bind(this);
     this.login = this.login.bind(this);
+    this.setError=this.setError.bind(this);
   }
+
+  componentDidUpdate()
+  {
+    if(this.state.error === true)
+    {
+      const timer = setTimeout(() => {
+        this.setError();
+      }, 6000);
+
+      return () => {
+      clearTimeout(timer);
+      };
+    }
+    else
+    {
+      return null;
+    }
+  }
+
+  setError() {
+    this.setState({
+      error:false
+    });
+  }
+
 
   signUp() {
 
@@ -59,7 +85,7 @@ class Login extends React.Component {
     return (
       <>
         { this.state.error && ( 
-        <AlertDismissibleExample/>)
+        <LoginError/>)
         }
 
       <div className = "login">Login To Save Classes</div>

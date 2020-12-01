@@ -213,24 +213,26 @@ class Home extends React.Component {
           selectChange = {this.selectChange}
           classes = {this.state.classes}
         />
+
         <div className="classes">
-          <p id="classes">Classes: <br /> These classes should be first passed: </p>
-          <p id="first-pass-classes">{firstPassClasses}</p>
+          <div id="classes"> First Pass: </div>
+          <div id="first-pass-classes">{firstPassClasses}</div>
           <hr />
-          <p id="closed-classes">{closedClasses}</p> 
-          <p id="classes"> {openClasses}</p>
+          <div id="closed-classes">{closedClasses}</div> 
+          <div id="classes"> {openClasses}</div>
         </div>
         <button onClick={() => this.getClasses()}>
-          Click me
-        </button>
+          Search </button>
       </div>
+      
 
 
       { this.state.user ? ( 
         <div>
-        <button onClick = {()=> this.saveClasses()}>Save Classes </button>
+        <button onClick = {()=> this.saveClasses()}>Save Classes</button> 
+        <hr />
 
-        <p>You Are Logged In</p>
+        <div>You Are Logged In</div>
         <button onClick = {()=>this.logout()}>Logout</button>
         </div>) 
 
