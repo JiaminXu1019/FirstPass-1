@@ -221,7 +221,7 @@ class Home extends React.Component {
           <div id="closed-classes">{closedClasses}</div> 
           <div id="classes"> {openClasses}</div>
         </div>
-        <button onClick={() => this.getClasses()}>
+        <button className = "button2" onClick={() => this.getClasses()}>
           Search </button>
       </div>
       
