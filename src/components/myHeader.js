@@ -4,8 +4,8 @@ function MyHeader() {
     return (
       <div>
         <div className="header">
-          <p id="title">FirstPass</p>
-          <p id="subtitle">For UCLA Students</p>
+          <div id="title">FirstPass</div>
+          <div id="subtitle">For UCLA Students</div>
         </div>
       </div>
     )
