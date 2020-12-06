@@ -1,12 +1,12 @@
 .container{
-
  position: relative;
  font-size:20px;
  font-family:sans-serif; 
+ padding: 20px;
+ width: 75%;
 }
 
 .login{
  position: relative;
- 
  font-size:30px;
 }
