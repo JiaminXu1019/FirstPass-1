@@ -69,6 +69,13 @@ class Home extends React.Component {
   //Note: the array is in the same order as the classes array in the state 
   //9999 means the class never fills up
   getClasses = async () => {
+    if (this.state.selectedOption == ''){
+      alert('Please input your standing.');
+      return;
+    }
+      
+
+
     return await axios.post(serverURL + '/classesData', {classes: this.state.classes})
     .then((response) => {
       this.setState({
@@ -152,7 +159,7 @@ class Home extends React.Component {
     let classOrder = new Map(); // map of potential first pass classes to index into dates.json
 
     // set startOfFirstPass to the starts of first passes based on standing
-    var startOfFirstPass = 0;
+    var startOfFirstPass = 9999;
     switch(standing) {
       case 'Freshman':
         startOfFirstPass = 122;
@@ -163,11 +170,18 @@ class Home extends React.Component {
       case 'Junior':
         startOfFirstPass = 58;
         break;
+      case 'Senior':
+        startOfFirstPass = 0;
+        break;
       default:
         break;
     }
 
+    
     if(gotResults) {
+      // if (startOfFirstPass===9999) {
+      //   return "Please input your standing";
+      // }
       /* go through array of objects of duplicate class names */
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
@@ -175,7 +189,7 @@ class Home extends React.Component {
         if (fillUpDates[i] !== 9999) {
           classOrder.set(fillUpDates[i], name);
         } else {
-          openClasses.push(name + ' (never fills up), ');
+          openClasses.push(name + ' (Never fills up), ');
         }
       }
       var sortedClasses = new Map([...classOrder.entries()].sort());
@@ -187,10 +201,10 @@ class Home extends React.Component {
 
         // Check if the class closes before first pass
         if (key < startOfFirstPass) {
-          nameOfClass = nameOfClass + ' (closed), ';
+          nameOfClass = nameOfClass + ' (Closes before First Pass), ';
           closedClasses.push(nameOfClass);
         } else {
-          nameOfClass = nameOfClass + ' (' + filledDate +'), ';
+          nameOfClass = nameOfClass + ' (Fills up within ' + filledDate +'), ';
           firstPassClasses.push(nameOfClass); 
         }
     }
@@ -221,8 +235,10 @@ class Home extends React.Component {
           <div id="closed-classes">{closedClasses}</div> 
           <div id="classes"> {openClasses}</div>
         </div>
+
         <button className = "button2" onClick={() => this.getClasses()}>
           Search </button>
+        
       </div>
       
 
