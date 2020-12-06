@@ -36,6 +36,13 @@ button {
     text-align: left;
     padding-left: 5%;
     font-size: 1.2rem;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    grid-column: 3;
+}
+
+#classes {
+    font-size: 1.35rem;
 }
 
 #first-pass-classes {

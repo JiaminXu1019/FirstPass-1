@@ -146,7 +146,6 @@ class Home extends React.Component {
   }
 
   render() {
-
     // convert JS Object of input classes into an array
     const gotResults = this.state.resultsReceived;
     const arrayOfClassObjects = this.state.classes;
@@ -179,9 +178,6 @@ class Home extends React.Component {
 
     
     if(gotResults) {
-      // if (startOfFirstPass===9999) {
-      //   return "Please input your standing";
-      // }
       /* go through array of objects of duplicate class names */
       for(var i = 0; i < arrayOfClassObjects.length; i++) {
         var name = arrayOfClassObjects[i]["value"];
@@ -189,7 +185,7 @@ class Home extends React.Component {
         if (fillUpDates[i] !== 9999) {
           classOrder.set(fillUpDates[i], name);
         } else {
-          openClasses.push(name + ' (Never fills up), ');
+          openClasses.push(name);
         }
       }
       var sortedClasses = new Map([...classOrder.entries()].sort());
@@ -201,13 +197,17 @@ class Home extends React.Component {
 
         // Check if the class closes before first pass
         if (key < startOfFirstPass) {
-          nameOfClass = nameOfClass + ' (Closes before First Pass), ';
+          //nameOfClass = nameOfClass + ' (Closes before First Pass), ';
           closedClasses.push(nameOfClass);
         } else {
-          nameOfClass = nameOfClass + ' (Fills up within ' + filledDate +'), ';
+          nameOfClass = nameOfClass + ' (Fills up within ' + filledDate +') ' + "\n";
           firstPassClasses.push(nameOfClass); 
         }
     }
+    firstPassClasses = firstPassClasses.map((name) => <li>{name}</li>)
+    closedClasses = closedClasses.map((name) => <li>{name}</li>)
+    openClasses = openClasses.map((name) => <li>{name}</li>)
+
     }
 
 
@@ -228,13 +228,23 @@ class Home extends React.Component {
           classes = {this.state.classes}
         />
 
+
+          
+
         <div className="classes">
-          <div id="classes"> First Pass: </div>
+          
+          <div id="classes"> We recommend that you First Pass: </div>
           <div id="first-pass-classes">{firstPassClasses}</div>
+
           <hr />
+          <div id="classes"> These classes are likely to fill before your First Pass: </div>
           <div id="closed-classes">{closedClasses}</div> 
-          <div id="classes"> {openClasses}</div>
+          <hr />
+          <div id="classes"> These classes never filled up: </div>
+          <div > {openClasses}</div>
         </div>
+
+
 
         <button className = "button2" onClick={() => this.getClasses()}>
           Search </button>
