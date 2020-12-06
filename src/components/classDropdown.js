@@ -12,7 +12,7 @@ class ClassDropdown extends React.Component {
     render() {
         //var selectChange = this.props.selectChange;
         return(
-            <div className = "container">
+            <div className = "dropdown-container">
                 <form className = "inside"> 
                     <Select
                         placeholder="Search for a class"

@@ -1,6 +1,6 @@
 .header{
     position: absolute;
-    width: 100vw;
+    width: 100%;
     height: 120px;
   
     display: flex;
@@ -11,12 +11,13 @@
     background-color: #2774AE;
 }
 
-  .header p {
+  .header div {
     color: #FFC72C;
     font-family: 'Poligon', sans-serif;
     font-style: normal;
     font-weight: 350;
     font-size: 4rem;
+    line-height: normal;
   }
 
   .header #subtitle {
