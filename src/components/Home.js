@@ -4,18 +4,16 @@ import fire from './fire.js';
 // Connection to backend
 import axios from 'axios'
 import Login from './Login.js'
+import Profile from './Profile.js'
 
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
 import {class_dates} from './dates.js'
-//import { response } from 'express';
-
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
 
 const serverURL = 'http://localhost:5000';
+const ProfileRouted = withRouter(Profile);
 
 class Home extends React.Component {
   constructor(props) {
@@ -73,8 +71,6 @@ class Home extends React.Component {
       alert('Please input your standing.');
       return;
     }
-      
-
 
     return await axios.post(serverURL + '/classesData', {classes: this.state.classes})
     .then((response) => {
@@ -210,9 +206,16 @@ class Home extends React.Component {
 
     }
 
-
     return (
+
       <>
+        <div className="row">
+          <button onClick={()=>{
+            return this.props.history.push('/profile')}} 
+            type="button" 
+            class="btn">Profile
+          </button>   
+        </div>
       <div className="radio-buttons">
         <div className="box">
           <p id="standing">Standing</p>
@@ -251,7 +254,7 @@ class Home extends React.Component {
         
       </div>
       
-
+      
 
       { this.state.user ? ( 
         <div>
@@ -260,7 +263,8 @@ class Home extends React.Component {
 
         <div>You Are Logged In</div>
         <button onClick = {()=>this.logout()}>Logout</button>
-        </div>) 
+        </div>
+      ) 
 
         : ( <Login /> ) }
       

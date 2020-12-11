@@ -41,7 +41,6 @@ class Login extends React.Component {
     });
   }
 
-
   signUp() {
 
     const email = document.querySelector('#email').value;
