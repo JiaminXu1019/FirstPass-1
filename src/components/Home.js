@@ -4,16 +4,13 @@ import fire from './fire.js';
 // Connection to backend
 import axios from 'axios'
 import Login from './Login.js'
-import Profile from './Profile.js'
 
 // Components
 import StandingRadioButton from './standing-radio-button'
 import ClassDropdown from './classDropdown'
 import {class_dates} from './dates.js'
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
 
 const serverURL = 'http://localhost:5000';
-const ProfileRouted = withRouter(Profile);
 
 class Home extends React.Component {
   constructor(props) {
@@ -23,7 +20,8 @@ class Home extends React.Component {
       selectedOption: "",
       results: "",
       resultsReceived: false,
-      user: null
+      user: null,
+      email: "",
     };
 
     this.authListener = this.authListener.bind(this);
@@ -203,19 +201,11 @@ class Home extends React.Component {
     firstPassClasses = firstPassClasses.map((name) => <li>{name}</li>)
     closedClasses = closedClasses.map((name) => <li>{name}</li>)
     openClasses = openClasses.map((name) => <li>{name}</li>)
-
     }
 
     return (
 
       <>
-        <div className="row">
-          <button onClick={()=>{
-            return this.props.history.push('/profile')}} 
-            type="button" 
-            class="btn">Profile
-          </button>   
-        </div>
       <div className="radio-buttons">
         <div className="box">
           <p id="standing">Standing</p>
@@ -253,21 +243,37 @@ class Home extends React.Component {
           Search </button>
         
       </div>
-      
-      
 
-      { this.state.user ? ( 
+      { this.state.user ? (
         <div>
-        <button onClick = {()=> this.saveClasses()}>Save Classes</button> 
-        <hr />
+          <button type="button" data-toggle="modal" data-target="#exampleModal">
+          Profile
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+              </div>
+              <div class="modal-body">
+              {"Email: " + this.state.user.email}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <button onClick = {()=> this.saveClasses()}>Save Classes</button> 
+          <hr />
 
-        <div>You Are Logged In</div>
-        <button onClick = {()=>this.logout()}>Logout</button>
+          <div>You Are Logged In</div>
+          <button onClick = {()=>this.logout()}>Logout</button>
         </div>
       ) 
 
-        : ( <Login /> ) }
-      
+        : ( <Login/> ) 
+      }      
        </>
     );
   } 

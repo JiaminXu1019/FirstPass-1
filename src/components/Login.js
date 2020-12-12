@@ -3,13 +3,13 @@ import fire from './fire.js';
 import './Login.css'
 import LoginError from './alert.js';
 
-
 class Login extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-        error : false
+        error : false,
+        modal: false,
     };
 
     this.signUp = this.signUp.bind(this);

@@ -4,6 +4,7 @@ import Post from './Post';
 import PostInput from './PostInput';
 import MyHeader from './myHeader.js'
 import './Feedback.css'
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
 
 function Feedback() {
   const [posts, setPosts] = useState([]);
