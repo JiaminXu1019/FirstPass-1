@@ -23,7 +23,8 @@ class Home extends React.Component {
       selectedOption: "",
       results: "",
       resultsReceived: false,
-      user: null
+      user: null,
+      email: "",
     };
 
     this.authListener = this.authListener.bind(this);
@@ -253,21 +254,37 @@ class Home extends React.Component {
           Search </button>
         
       </div>
-      
-      
 
-      { this.state.user ? ( 
+      { this.state.user ? (
         <div>
-        <button onClick = {()=> this.saveClasses()}>Save Classes</button> 
-        <hr />
+          <button type="button" data-toggle="modal" data-target="#exampleModal">
+          Profile
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+              </div>
+              <div class="modal-body">
+              {"Email: " + this.state.user.email}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <button onClick = {()=> this.saveClasses()}>Save Classes</button> 
+          <hr />
 
-        <div>You Are Logged In</div>
-        <button onClick = {()=>this.logout()}>Logout</button>
+          <div>You Are Logged In</div>
+          <button onClick = {()=>this.logout()}>Logout</button>
         </div>
       ) 
 
-        : ( <Login /> ) }
-      
+        : ( <Login/> ) 
+      }      
        </>
     );
   } 
