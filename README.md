@@ -18,6 +18,7 @@ Once you have chosen all your classes, submit using the button below. <br/>
 On the right side of the screen there will be a list of classes that you should First Pass along with how long they usually take to fill up (in green text),<br/>
 a list of classes that are likely to have filled before your First Pass (in red text), <br/>
 and a list of classes that you should Second Pass because they are unlikely to fill up (in black text).<br/>
+There is also a feedback forum to let us know how effective our recommendations were!<br/>
 Use this information to help you strategize which classes you should enroll in during your First Pass next quarter!<br/>
 
 # How to use Login
