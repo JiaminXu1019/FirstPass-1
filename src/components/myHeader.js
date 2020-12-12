@@ -9,8 +9,10 @@ class MyHeader extends React.Component {
       return (
         <div>
           <div className="header">
-            <div id="title">FirstPass</div>
-            <div id="subtitle">For UCLA Students</div>
+            <div className='fp-logo'>
+              <div id="title">FirstPass</div>
+              <div id="subtitle">For UCLA Students</div>
+            </div>
             <button onClick={()=>{
               return this.props.history.push('/feedback')}} 
               type="button" 

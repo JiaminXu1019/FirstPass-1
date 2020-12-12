@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import fire from './fire.js';
 import Post from './Post';
 import PostInput from './PostInput';
+import MyHeader from './myHeader.js'
+import './Feedback.css'
 
 function Feedback() {
   const [posts, setPosts] = useState([]);
@@ -18,15 +20,22 @@ function Feedback() {
 
   return (
     <>
-      <PostInput />
 
-      {posts.map((post) => (
-        <Post
-          author={post.author}
-          body={post.body}
-          title={post.title}
-        />
-      ))}
+      <MyHeader />
+
+      <div className='feedback-body'>
+        <p id="feedback-text">Leave your feedback here! We'd love to hear from you :D</p>
+        <div className='feedback-grid'>
+          <PostInput />
+          {posts.map((post) => (
+            <Post
+              author={post.author}
+              body={post.body}
+              title={post.title}
+            />
+          ))}
+        </div>
+      </div>
     </>
   );
 }

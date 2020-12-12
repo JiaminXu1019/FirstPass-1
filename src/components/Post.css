@@ -1,39 +1,9 @@
 .div {
  border: 1px solid hsl(218, 15%, 31%);
- height: 40px;
  width: 90%;
  margin-left: 10px;
  margin-top: 10px;
  margin-bottom: 10px;
-
-
-}
-
-.header1 {
- margin-left: 10px;
-
-
-}
-
-
-.bigdiv {
- height: 270px;
- width: 20%;
- margin-left: 30px;
- margin-top: 30px;
- margin-bottom: 30px;
-
-
-}
-
-.bigdiv2 {
-
- height: 270px;
- width: 20%;
- margin-left: 30px;
- margin-top: 30px;
- margin-bottom: 30px;
- text-align: center;
-
+ min-height: 20%;
 
 }

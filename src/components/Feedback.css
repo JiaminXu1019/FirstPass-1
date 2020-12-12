@@ -1,0 +1,30 @@
+.feedback-body {
+    padding-top: 170px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#feedback-text {
+    font-size: 1.5rem;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto 12vh;
+    grid-column-gap: 2.5%;
+    grid-row-gap: 20px;
+
+    padding-top: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.feedback-grid .item{
+    display:flex;
+    justify-content: left;
+    align-content: flex-start;
+    font-size:40px;
+    font-family:sans-serif; 
+}
