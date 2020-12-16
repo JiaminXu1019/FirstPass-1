@@ -25,9 +25,15 @@ Use this information to help you strategize which classes you should enroll in d
 To create an account, enter your email and a password.<br/>
 An option to "Save Classes" will appear at the bottom of the screen. This will save your selected classes so if you need to come back 
 and check on them in the future, you don't need to re-enter them.<br/>
+To check which email your account is associated with, click on the "Profile" button.<br/>
 If desired, click Logout after finishing.<br/>
 The next time you want to check your classes, simply Login with your email and password at the bottom of the screen. <br/>
 Your classes will be saved in the dropdown and you simply select your standing and search again!<br/>
 
+# How to use the Feedback Form
+Click on the button labeled "Feedback". This will lead you to another pagge.<br/>
+The first section will be for you to add your own feedback for the website. You can add a title, a comment, and your name.<br/>
+The other sections will be feedback left by other users before you.<br/>
+Once feedback is submitted, it will be saved and displayed.<br/>
 
 Created for CS97 Final Project by Andy Goh, Ethan Wong, Francis Feng, and Jiamin Xu
